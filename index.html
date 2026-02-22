@@ -1,102 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pelesores Encryption & Cipher Tool</title>
-    <link rel="stylesheet" href="index.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pelesores Encryption, Cipher & Hash Tool</title>
+<link rel="stylesheet" href="index.css">
 </head>
 <body>
 
 <div class="wrapper">
-    <div class="container">
-        <h1>Pelesores Encryption & Cipher Tool</h1>
+<div class="container">
 
-        <div class="instructions">
-            <h2>RSA Public / Private Key Instructions</h2>
-            <ol>
-                <li>Click Generate Keys.</li>
-                <li>Type your message in the RSA Message box.</li>
-                <li>Click Encrypt (RSA).</li>
-                <li>Click Decrypt (RSA).</li>
-                <li>Keep your Private Key secret.</li>
-            </ol>
-        </div>
+<h1>Pelesores Encryption, Cipher & Hash Tool</h1>
 
-        <h2>RSA Public / Private Key</h2>
-        <button onclick="generateKeys()" class="primary">Generate Keys</button>
+<div class="instructions">
+<h2>RSA Public / Private Key Instructions</h2>
+<ol>
+<li>Click Generate Keys.</li>
+<li>Type your message in the RSA Message box.</li>
+<li>Click Encrypt (RSA).</li>
+<li>Click Decrypt (RSA).</li>
+<li>Keep your Private Key secret.</li>
+</ol>
+</div>
 
-        <div class="grid">
-            <div>
-                <h3>Public Key</h3>
-                <textarea id="publicKey" readonly></textarea>
-            </div>
-            <div>
-                <h3>Private Key</h3>
-                <textarea id="privateKey" readonly></textarea>
-            </div>
-        </div>
+<h2>RSA Public / Private Key</h2>
+<button onclick="generateKeys()" class="primary">Generate Keys</button>
 
-        <h3>RSA Message</h3>
-        <textarea id="rsaMessage" placeholder="Type your message here..."></textarea>
+<div class="grid">
+<div>
+<h3>Public Key</h3>
+<textarea id="publicKey" readonly></textarea>
+</div>
+<div>
+<h3>Private Key</h3>
+<textarea id="privateKey" readonly></textarea>
+</div>
+</div>
 
-        <div class="button-group">
-            <button onclick="encryptMessage()">Encrypt (RSA)</button>
-            <button onclick="decryptMessage()">Decrypt (RSA)</button>
-        </div>
+<h3>RSA Message</h3>
+<textarea id="rsaMessage" placeholder="Type your message here..."></textarea>
 
-        <h3>RSA Output</h3>
-        <textarea id="rsaOutput" readonly></textarea>
+<div class="button-group">
+<button onclick="encryptMessage()">Encrypt (RSA)</button>
+<button onclick="decryptMessage()">Decrypt (RSA)</button>
+</div>
 
-        <hr>
+<h3>RSA Output</h3>
+<textarea id="rsaOutput" readonly></textarea>
 
-        <div class="instructions">
-            <h2>Caesar Cipher Instructions</h2>
-            <ol>
-                <li>Type your message in the Cipher Message box.</li>
-                <li>Enter a shift number.</li>
-                <li>Click Encipher.</li>
-                <li>Click Decipher.</li>
-                <li>Use the same shift number when deciphering.</li>
-            </ol>
-        </div>
+<hr>
 
-        <div class="instructions">
-            <h2>How Caesar Cipher Works</h2>
-            <p>
-                The Caesar Cipher shifts each letter of your message forward or backward 
-                in the alphabet based on the shift number you provide.
-            </p>
-            <p>
-                Example: If the shift is 3:
-            </p>
-            <ul>
-                <li>A becomes D</li>
-                <li>B becomes E</li>
-                <li>C becomes F</li>
-            </ul>
-            <p>
-                When deciphering, the letters are shifted backward using the same number.
-                Non-letter characters like spaces and symbols remain unchanged.
-            </p>
-        </div>
+<div class="instructions">
+<h2>Caesar Cipher Instructions</h2>
+<ol>
+<li>Type your message in the Cipher Message box.</li>
+<li>Enter a shift number.</li>
+<li>Click Encipher.</li>
+<li>Click Decipher.</li>
+</ol>
+</div>
 
-        <h2>Caesar Cipher</h2>
+<div class="instructions">
+<h2>How Caesar Cipher Works</h2>
+<p>The Caesar Cipher shifts letters forward or backward in the alphabet using a shift number.</p>
+<p>Example (Shift 3): A → D, B → E, C → F.</p>
+<p>Deciphering shifts letters backward using the same number.</p>
+</div>
 
-        <h3>Cipher Message</h3>
-        <textarea id="cipherMessage" placeholder="Type your message here..."></textarea>
+<h2>Caesar Cipher</h2>
 
-        <input type="number" id="shift" placeholder="Enter shift number">
+<h3>Cipher Message</h3>
+<textarea id="cipherMessage" placeholder="Type your message here..."></textarea>
 
-        <div class="button-group">
-            <button onclick="encipher()">Encipher</button>
-            <button onclick="decipher()">Decipher</button>
-        </div>
+<input type="number" id="shift" placeholder="Enter shift number">
 
-        <h3>Cipher Output</h3>
-        <textarea id="cipherOutput" readonly></textarea>
+<div class="button-group">
+<button onclick="encipher()">Encipher</button>
+<button onclick="decipher()">Decipher</button>
+</div>
 
-    </div>
+<h3>Cipher Output</h3>
+<textarea id="cipherOutput" readonly></textarea>
+
+<hr>
+
+<div class="instructions">
+<h2>Hash Generator Instructions</h2>
+<ol>
+<li>Type your message in the Hash Message box.</li>
+<li>Click Generate Hash.</li>
+<li>The system will create a SHA-256 hash.</li>
+<li>Hashing is one-way and cannot be decrypted.</li>
+</ol>
+</div>
+
+<div class="instructions">
+<h2>How Hashing Works</h2>
+<p>Hashing converts your message into a fixed-length string using SHA-256.</p>
+<p>The same input always produces the same hash.</p>
+<p>Even a small change in the message creates a completely different hash.</p>
+<p>Hashing is one-way and cannot be reversed.</p>
+</div>
+
+<h2>SHA-256 Hash Generator</h2>
+
+<h3>Hash Message</h3>
+<textarea id="hashMessage" placeholder="Type your message here..."></textarea>
+
+<button onclick="generateHash()" class="primary">Generate Hash</button>
+
+<h3>Hash Output</h3>
+<textarea id="hashOutput" readonly></textarea>
+
+</div>
 </div>
 
 <script src="index.js"></script>

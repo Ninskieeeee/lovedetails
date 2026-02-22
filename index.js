@@ -79,6 +79,20 @@ function caesar(text, shift) {
     }).join("");
 }
 
+async function generateHash() {
+    const message = document.getElementById("hashMessage").value;
+    if (message === "") return;
+
+    const encoder = new TextEncoder();
+    const data = encoder.encode(message);
+
+    const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
+
+    document.getElementById("hashOutput").value = hashHex;
+}
+
 function arrayBufferToBase64(buffer) {
     return btoa(String.fromCharCode(...new Uint8Array(buffer)));
 }
