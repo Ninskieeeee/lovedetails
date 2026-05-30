@@ -1,121 +1,647 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pelesores Encryption, Cipher & Hash Tool</title>
-<link rel="stylesheet" href="index.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reggie Niño Zafra Pelesores | IT Portfolio</title>
+  <link rel="stylesheet" href="index.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
 
-<div class="wrapper">
-<div class="container">
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
 
-<h1>Pelesores Encryption, Cipher & Hash Tool</h1>
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-text">Loading Portfolio</div>
+      <div class="preloader-bar"><div class="preloader-fill" id="preloaderFill"></div></div>
+    </div>
+  </div>
 
-<div class="instructions">
-<h2>RSA Public / Private Key Instructions</h2>
-<ol>
-<li>Click Generate Keys.</li>
-<li>Type your message in the RSA Message box.</li>
-<li>Click Encrypt (RSA).</li>
-<li>Click Decrypt (RSA).</li>
-<li>Keep your Private Key secret.</li>
-</ol>
-</div>
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-logo">
+      <span class="logo-bracket">&lt;</span>RNZP<span class="logo-bracket">/&gt;</span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+      <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+      <li><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
+      <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
+      <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
 
-<h2>RSA Public / Private Key</h2>
-<button onclick="generateKeys()" class="primary">Generate Keys</button>
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <div class="hero-grid"></div>
+      <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+      </div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-tag animate-up delay-1">
+        <span class="dot"></span> Available for Internship &amp; Collaboration
+      </div>
+      <h1 class="hero-name animate-up delay-2">
+        Reggie Niño<br />Zafra<br/><span class="name-accent">Pelesores</span>
+      </h1>
+      <div class="hero-title animate-up delay-3">
+        <span class="typed-text" id="typedText"></span><span class="cursor-blink">|</span>
+      </div>
+      <p class="hero-desc animate-up delay-4">
+        A passionate <strong>IT Fresh Graduate</strong> exploring the world of technology — building modern web experiences, learning frameworks, and turning curiosity into code.
+      </p>
+      <div class="hero-cta animate-up delay-5">
+        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <a href="#contact" class="btn btn-outline">Get In Touch</a>
+      </div>
+      <div class="hero-stats animate-up delay-6">
+        <div class="stat">
+          <span class="stat-num" data-count="10">0</span>+
+          <span class="stat-label">Frameworks Learned</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" data-count="5">0</span>+
+          <span class="stat-label">Projects Built</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" data-count="4">0</span>
+          <span class="stat-label">Year Experience</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-image animate-fade delay-4">
+      <div class="image-frame">
+        <img src="images/MyPortfolio.jpg" alt="Reggie Niño Zafra Pelesores"
+             onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&crop=face'" />
+        <div class="image-overlay"></div>
+      </div>
+      <div class="image-badge badge-1">
+        <i class="fab fa-react"></i> React
+      </div>
+      <div class="image-badge badge-2">
+        <i class="fab fa-laravel"></i> Laravel
+      </div>
+      <div class="image-badge badge-3">
+        <i class="fab fa-vuejs"></i> Vue
+      </div>
+    </div>
+    <div class="scroll-indicator animate-up delay-6">
+      <div class="scroll-text">Scroll Down</div>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
 
-<div class="grid">
-<div>
-<h3>Public Key</h3>
-<textarea id="publicKey" readonly></textarea>
-</div>
-<div>
-<h3>Private Key</h3>
-<textarea id="privateKey" readonly></textarea>
-</div>
-</div>
+  <!-- About Section -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">01 — About</span>
+        <h2 class="section-title">Who I Am</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-image-wrap reveal-left">
+          <div class="about-img-card">
+            <img src="images/MyPortfolioOne.jpg" alt="Coding Setup"
+                 onerror="this.src='https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500&h=600&fit=crop'" />
+            <div class="about-img-accent"></div>
+          </div>
+          <div class="about-exp-badge">
+            <span class="exp-year">2023</span>
+            <span class="exp-label">Started Journey</span>
+          </div>
+        </div>
+        <div class="about-text reveal-right">
+          <h3 class="about-heading">Hello! I'm Reggie 👋</h3>
+          <p class="about-para">
+            I'm a Fresh Graduate <strong>Information Technology student</strong> with a deep passion for building things on the web. From the first time I wrote a line of HTML, I knew technology was my path.
+          </p>
+          <p class="about-para">
+            I spend my time learning modern frameworks, experimenting with UI design, and contributing to projects that challenge me to grow. I believe great software is both functional and beautiful.
+          </p>
+          <div class="about-facts">
+            <div class="fact-item">
+              <i class="fas fa-graduation-cap"></i>
+              <div>
+                <strong>Information Technology</strong>
+                <span>BS IT Fresh Graduate</span>
+              </div>
+            </div>
+            <div class="fact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <div>
+                <strong>Bohol, Philippines</strong>
+                <span>Open to Remote Work</span>
+              </div>
+            </div>
+            <div class="fact-item">
+              <i class="fas fa-code"></i>
+              <div>
+                <strong>Full-Stack Learner</strong>
+                <span>Frontend &amp; Backend Enthusiast</span>
+              </div>
+            </div>
+          </div>
+          <a href="#skills" class="btn btn-primary mt-2">See My Skills</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<h3>RSA Message</h3>
-<textarea id="rsaMessage" placeholder="Type your message here..."></textarea>
+  <!-- Skills Section -->
+  <section class="skills section" id="skills">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">02 — Skills</span>
+        <h2 class="section-title">Tech Stack &amp; Frameworks</h2>
+        <p class="section-desc">As a fresh graduate, I've been actively learning across multiple domains of technology</p>
+      </div>
 
-<div class="button-group">
-<button onclick="encryptMessage()">Encrypt (RSA)</button>
-<button onclick="decryptMessage()">Decrypt (RSA)</button>
-</div>
+      <div class="skills-tabs" id="skillsTabs">
+        <button class="tab-btn active" data-tab="frontend">Frontend</button>
+        <button class="tab-btn" data-tab="backend">Backend</button>
+        <button class="tab-btn" data-tab="mobile">Mobile</button>
+        <button class="tab-btn" data-tab="tools">Tools &amp; Others</button>
+      </div>
 
-<h3>RSA Output</h3>
-<textarea id="rsaOutput" readonly></textarea>
+      <div class="skills-panels">
+        <!-- Frontend -->
+        <div class="skills-panel active" id="tab-frontend">
+          <div class="skills-grid">
+            <div class="skill-card reveal-up">
+              <div class="skill-icon" style="background: #e34f26;"><i class="fab fa-html5"></i></div>
+              <div class="skill-info">
+                <span class="skill-name">HTML5</span>
+                <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+                <span class="skill-percent">90%</span>
+              </div>
+            </div>
+            <div class="skill-card reveal-up delay-1">
+              <div class="skill-icon" style="background: #1572b6;"><i class="fab fa-css3-alt"></i></div>
+              <div class="skill-info">
+                <span class="skill-name">CSS3</span>
+                <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+                <span class="skill-percent">85%</span>
+              </div>
+            </div>
+            <div class="skill-card reveal-up delay-2">
+              <div class="skill-icon" style="background: #f7df1e;"><i class="fab fa-js"></i></div>
+              <div class="skill-info">
+                <span class="skill-name">JavaScript</span>
+                <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
+                <span class="skill-percent">75%</span>
+              </div>
+            </div>
+            <div class="skill-card reveal-up delay-3">
+              <div class="skill-icon" style="background: #61dafb;"><i class="fab fa-react"></i></div>
+              <div class="skill-info">
+                <span class="skill-name">React.js</span>
+                <div class="skill-bar"><div class="skill-fill" data-width="65"></div></div>
+                <span class="skill-percent">65%</span>
+              </div>
+            </div>
+            <div class="skill-card reveal-up delay-4">
+              <div class="skill-icon" style="background: #38bdf8;"><i class="fas fa-wind"></i></div>
+              <div class="skill-info">
+                <span class="skill-name">Tailwind CSS</span>
+                <div class="skill-bar"><div class="skill-fill" data-width="70"></div></div>
+                <span class="skill-percent">70%</span>
+              </div>
+            </div>
+            <div class="skill-card reveal-up delay-5">
+              <div class="skill-icon" style="background: #7952b3;"><i class="fab fa-bootstrap"></i></div>
+              <div class="skill-info">
+                <span class="skill-name">Bootstrap</span>
+                <div class="skill-bar"><div class="skill-fill" data-width="60"></div></div>
+                <span class="skill-percent">60%</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
-<hr>
+        <!-- Backend -->
+        <div class="skills-panel" id="tab-backend">
+          <div class="skills-grid">
+            <div class="skill-card reveal-up">
+              <div class="skill-icon" style="background: #3c873a;"><i class="fab fa-node-js"></i></div>
+              <div class="skill-info">
+                <span class="skill-name">Node.js</span>
+                <div class="skill-bar"><div class="skill-fill" data-width="50"></div></div>
+                <span class="skill-percent">50%</span>
+              </div>
+            </div>
+            <div class="skill-card reveal-up delay-1">
+              <div class="skill-icon" style="background: #3776ab;"><i class="fab fa-python"></i></div>
+              <div class="skill-info">
+                <span class="skill-name">Python</span>
+                <div class="skill-bar"><div class="skill-fill" data-width="50"></div></div>
+                <span class="skill-percent">50%</span>
+              </div>
+            </div>
+            <div class="skill-card reveal-up delay-2">
+              <div class="skill-icon" style="background: #ff6900;"><i class="fas fa-fire"></i></div>
+              <div class="skill-info">
+                <span class="skill-name">Express.js</span>
+                <div class="skill-bar"><div class="skill-fill" data-width="50"></div></div>
+                <span class="skill-percent">50%</span>
+              </div>
+            </div>
+            <div class="skill-card reveal-up delay-3">
+              <div class="skill-icon" style="background: #4479a1;"><i class="fas fa-database"></i></div>
+              <div class="skill-info">
+                <span class="skill-name">MySQL</span>
+                <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
+                <span class="skill-percent">75%</span>
+              </div>
+            </div>
+            <div class="skill-card reveal-up delay-4">
+              <div class="skill-icon" style="background: #47a248;"><i class="fas fa-leaf"></i></div>
+              <div class="skill-info">
+                <span class="skill-name">MongoDB</span>
+                <div class="skill-bar"><div class="skill-fill" data-width="50"></div></div>
+                <span class="skill-percent">50%</span>
+              </div>
+            </div>
+            <div class="skill-card reveal-up delay-5">
+              <div class="skill-icon" style="background: #cc0000;"><i class="fas fa-server"></i></div>
+              <div class="skill-info">
+                <span class="skill-name">Laravel (PHP)</span>
+                <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+                <span class="skill-percent">85%</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
-<div class="instructions">
-<h2>Caesar Cipher Instructions</h2>
-<ol>
-<li>Type your message in the Cipher Message box.</li>
-<li>Enter a shift number.</li>
-<li>Click Encipher.</li>
-<li>Click Decipher.</li>
-</ol>
-</div>
+        <!-- Mobile -->
+        <div class="skills-panel" id="tab-mobile">
+          <div class="skills-grid">
+            <div class="skill-card reveal-up">
+              <div class="skill-icon" style="background: #61dafb;"><i class="fab fa-react"></i></div>
+              <div class="skill-info">
+                <span class="skill-name">React Native</span>
+                <div class="skill-bar"><div class="skill-fill" data-width="50"></div></div>
+                <span class="skill-percent">50%</span>
+              </div>
+            </div>
+            <div class="skill-card reveal-up delay-1">
+              <div class="skill-icon" style="background: #0175c2;"><i class="fas fa-mobile-alt"></i></div>
+              <div class="skill-info">
+                <span class="skill-name">Flutter (Dart)</span>
+                <div class="skill-bar"><div class="skill-fill" data-width="40"></div></div>
+                <span class="skill-percent">50%</span>
+              </div>
+            </div>
+            <div class="skill-card reveal-up delay-2">
+              <div class="skill-icon" style="background: #a4c639;"><i class="fab fa-android"></i></div>
+              <div class="skill-info">
+                <span class="skill-name">Android (Java)</span>
+                <div class="skill-bar"><div class="skill-fill" data-width="35"></div></div>
+                <span class="skill-percent">35%</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
-<div class="instructions">
-<h2>How Caesar Cipher Works</h2>
-<p>The Caesar Cipher shifts letters forward or backward in the alphabet using a shift number.</p>
-<p>Example (Shift 3): A → D, B → E, C → F.</p>
-<p>Deciphering shifts letters backward using the same number.</p>
-</div>
+        <!-- Tools -->
+        <div class="skills-panel" id="tab-tools">
+          <div class="skills-grid">
+            <div class="skill-card reveal-up">
+              <div class="skill-icon" style="background: #f05032;"><i class="fab fa-git-alt"></i></div>
+              <div class="skill-info">
+                <span class="skill-name">Git &amp; GitHub</span>
+                <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
+                <span class="skill-percent">75%</span>
+              </div>
+            </div>
+            <div class="skill-card reveal-up delay-1">
+              <div class="skill-icon" style="background: #007acc;"><i class="fas fa-code"></i></div>
+              <div class="skill-info">
+                <span class="skill-name">VS Code</span>
+                <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+                <span class="skill-percent">90%</span>
+              </div>
+            </div>
+            <div class="skill-card reveal-up delay-2">
+              <div class="skill-icon" style="background: #f24e1e;"><i class="fab fa-figma"></i></div>
+              <div class="skill-info">
+                <span class="skill-name">Figma</span>
+                <div class="skill-bar"><div class="skill-fill" data-width="65"></div></div>
+                <span class="skill-percent">65%</span>
+              </div>
+            </div>
+            <div class="skill-card reveal-up delay-3">
+              <div class="skill-icon" style="background: #2496ed;"><i class="fab fa-docker"></i></div>
+              <div class="skill-info">
+                <span class="skill-name">Docker (Learning)</span>
+                <div class="skill-bar"><div class="skill-fill" data-width="30"></div></div>
+                <span class="skill-percent">30%</span>
+              </div>
+            </div>
+            <div class="skill-card reveal-up delay-4">
+              <div class="skill-icon" style="background: #ff9900;"><i class="fab fa-aws"></i></div>
+              <div class="skill-info">
+                <span class="skill-name">AWS Basics</span>
+                <div class="skill-bar"><div class="skill-fill" data-width="25"></div></div>
+                <span class="skill-percent">25%</span>
+              </div>
+            </div>
+            <div class="skill-card reveal-up delay-5">
+              <div class="skill-icon" style="background: #1e293b;"><i class="fas fa-terminal"></i></div>
+              <div class="skill-info">
+                <span class="skill-name">Linux CLI</span>
+                <div class="skill-bar"><div class="skill-fill" data-width="35"></div></div>
+                <span class="skill-percent">35%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<h2>Caesar Cipher</h2>
+  <!-- Projects Section -->
+  <section class="projects section" id="projects">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">03 — Projects</span>
+        <h2 class="section-title">What I've Built</h2>
+        <p class="section-desc">Hands-on projects that showcase my learning journey as a fresh graduate developer</p>
+      </div>
+      <div class="projects-grid">
 
-<h3>Cipher Message</h3>
-<textarea id="cipherMessage" placeholder="Type your message here..."></textarea>
+        <!-- PROJECT 1: Food Management System (FEATURED) -->
+        <div class="project-card featured reveal-up">
+          <div class="project-img">
+            <img src="images/project1.png" alt="Food Management System"
+                 onerror="this.src='https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=700&h=350&fit=crop'" />
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="#" class="proj-link"><i class="fab fa-github"></i> Code</a>
+                <a href="#" class="proj-link"><i class="fas fa-external-link-alt"></i> Live</a>
+              </div>
+            </div>
+            <span class="project-badge">Featured</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Food Management System</h3>
+            <p class="project-desc">A full-featured food management system built with pure Laravel and MySQL. Handles menu management, inventory tracking, order processing, and reporting — all within a clean, role-based dashboard interface.</p>
+            <div class="project-tags">
+              <span>Laravel</span><span>MySQL</span><span>PHP</span><span>Blade</span><span>Bootstrap</span>
+            </div>
+          </div>
+        </div>
 
-<input type="number" id="shift" placeholder="Enter shift number">
+        <!-- PROJECT 2: Weather Watch for Farmers -->
+        <div class="project-card reveal-up delay-1">
+          <div class="project-img">
+            <img src="images/project2.png" alt="Weather Watch Farming App"
+                 onerror="this.src='https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=600&h=350&fit=crop'" />
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="#" class="proj-link"><i class="fab fa-github"></i> Code</a>
+                <a href="#" class="proj-link"><i class="fas fa-external-link-alt"></i> Live</a>
+              </div>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">WeatherWatch — Farmer's Planting Guide</h3>
+            <p class="project-desc">A web app for farmers to check weather conditions and determine the best days to plant. Features a calendar view, weather alerts, and push notifications built with Laravel Breeze authentication.</p>
+            <div class="project-tags">
+              <span>Laravel Breeze</span><span>MySQL</span><span>Weather API</span><span>Calendar</span>
+            </div>
+          </div>
+        </div>
 
-<div class="button-group">
-<button onclick="encipher()">Encipher</button>
-<button onclick="decipher()">Decipher</button>
-</div>
+        <!-- PROJECT 3: Pet Adoption Management System -->
+        <div class="project-card reveal-up delay-2">
+          <div class="project-img">
+            <img src="images/project3.png" alt="Pet Adoption Management System"
+                 onerror="this.src='https://images.unsplash.com/photo-1548767797-d8c844163c4a?w=600&h=350&fit=crop'" />
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="#" class="proj-link"><i class="fab fa-github"></i> Code</a>
+                <a href="#" class="proj-link"><i class="fas fa-external-link-alt"></i> Live</a>
+              </div>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Pet Adoption Management System</h3>
+            <p class="project-desc">A full-stack pet adoption platform connecting adopters with shelters. Built with React.js frontend and Laravel backend, featuring pet listings, adoption requests, and an admin dashboard.</p>
+            <div class="project-tags">
+              <span>React.js</span><span>Laravel</span><span>Tailwind</span><span>MySQL</span>
+            </div>
+          </div>
+        </div>
 
-<h3>Cipher Output</h3>
-<textarea id="cipherOutput" readonly></textarea>
+        <!-- PROJECT 4: Personal Portfolio -->
+        <div class="project-card reveal-up delay-3">
+          <div class="project-img">
+            <img src="images/project4.png" alt="Personal Portfolio Website"
+                 onerror="this.src='https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=600&h=350&fit=crop'" />
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="#" class="proj-link"><i class="fab fa-github"></i> Code</a>
+                <a href="#" class="proj-link"><i class="fas fa-external-link-alt"></i> Live</a>
+              </div>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Personal Portfolio</h3>
+            <p class="project-desc">This very portfolio you're viewing — built with vanilla HTML, CSS, and JavaScript. Features custom cursor, scroll animations, typing effects, skill bars, and a fully responsive layout.</p>
+            <div class="project-tags">
+              <span>HTML5</span><span>CSS3</span><span>JavaScript</span>
+            </div>
+          </div>
+        </div>
 
-<hr>
+        <!-- PROJECT 5: Intern OJT Tracker (FEATURED WIDE) -->
+        <div class="project-card featured reveal-up delay-4">
+          <div class="project-img">
+            <img src="images/project5.png" alt="Intern OJT Tracker Management System"
+                 onerror="this.src='https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700&h=350&fit=crop'" />
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="#" class="proj-link"><i class="fab fa-github"></i> Code</a>
+                <a href="#" class="proj-link"><i class="fas fa-external-link-alt"></i> Live</a>
+              </div>
+            </div>
+            <span class="project-badge">Mobile + Web</span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Intern OJT Tracker Management System</h3>
+            <p class="project-desc">A complete OJT tracking platform with a web-based admin dashboard and a companion React Native mobile app for interns. Interns can submit daily journal entries, receive push notifications for reminders and announcements, and track their OJT hours — all from their phones.</p>
+            <div class="project-tags">
+              <span>React Native</span><span>Laravel</span><span>MySQL</span><span>Push Notifications</span><span>Journal</span>
+            </div>
+          </div>
+        </div>
 
-<div class="instructions">
-<h2>Hash Generator Instructions</h2>
-<ol>
-<li>Type your message in the Hash Message box.</li>
-<li>Click Generate Hash.</li>
-<li>The system will create a SHA-256 hash.</li>
-<li>Hashing is one-way and cannot be decrypted.</li>
-</ol>
-</div>
+      </div>
+    </div>
+  </section>
 
-<div class="instructions">
-<h2>How Hashing Works</h2>
-<p>Hashing converts your message into a fixed-length string using SHA-256.</p>
-<p>The same input always produces the same hash.</p>
-<p>Even a small change in the message creates a completely different hash.</p>
-<p>Hashing is one-way and cannot be reversed.</p>
-</div>
+  <!-- Contact Section -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">04 — Contact</span>
+        <h2 class="section-title">Let's Connect</h2>
+        <p class="section-desc">Have a project in mind or just want to say hello? I'd love to hear from you!</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal-left">
+          <div class="contact-card">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <span class="c-label">Email</span>
+              <a href="mailto:reggieninozafrapelesores@gmail.com">reggieninozafrapelesores@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <i class="fab fa-facebook"></i>
+            <div>
+              <span class="c-label">Facebook</span>
+              <a href="https://www.facebook.com/profile.php?id=61576712822459" target="_blank">Ninskie Pelesores</a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <i class="fab fa-whatsapp"></i>
+            <div>
+              <span class="c-label">WhatsApp</span>
+              <a href="https://wa.me/639519541044" target="_blank">0951-954-1044</a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <i class="fab fa-discord"></i>
+            <div>
+              <span class="c-label">Discord</span>
+              <a href="https://discord.com/channels/@me" target="_blank">Ninskieeeeeeeeeee</a>
+            </div>
+          </div>
+          <div class="contact-social">
+            <a href="https://www.facebook.com/profile.php?id=61576712822459" target="_blank" class="social-btn" title="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="mailto:reggieninozafrapelesores@gmail.com" class="social-btn" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://wa.me/639519541044" target="_blank" class="social-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://discord.com/channels/@me" target="_blank" class="social-btn" title="Discord"><i class="fab fa-discord"></i></a>
+          </div>
+        </div>
+        <div class="contact-form-wrap reveal-right">
+          <form class="contact-form" id="contactForm" action="https://formspree.io/f/reggieninozafrapelesores@gmail.com" method="POST">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Your Name</label>
+                <input type="text" name="name" placeholder="Your Full Name Here" required />
+              </div>
+              <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" name="email" placeholder="your@email.com" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Subject</label>
+              <input type="text" name="subject" placeholder="Let's collaborate!" required />
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea rows="5" name="message" placeholder="Tell me about your project or idea..." required></textarea>
+            </div>
+            <!-- Formspree honeypot spam filter -->
+            <input type="text" name="_gotcha" style="display:none" />
+            <!-- Redirect back to portfolio after submit -->
+            <input type="hidden" name="_next" value="?sent=true" />
+            <button type="submit" class="btn btn-primary btn-full">
+              <span class="btn-text">Send Message</span>
+              <i class="fas fa-paper-plane"></i>
+            </button>
+            <div class="form-success" id="formSuccess">
+              <i class="fas fa-check-circle"></i> Message sent! I'll get back to you soon.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<h2>SHA-256 Hash Generator</h2>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <span class="logo-bracket">&lt;</span>RNZP<span class="logo-bracket">/&gt;</span>
+      </div>
+      <p class="footer-text">Designed &amp; Built by <strong>Reggie Niño Zafra Pelesores</strong> © 2025</p>
+      <p class="footer-sub">BS Information Technology Fresh Graduate</p>
+    </div>
+  </footer>
 
-<h3>Hash Message</h3>
-<textarea id="hashMessage" placeholder="Type your message here..."></textarea>
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 
-<button onclick="generateHash()" class="primary">Generate Hash</button>
+  <!-- Formspree AJAX submit — keeps the animation, sends real email -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('contactForm');
+      const formSuccess = document.getElementById('formSuccess');
 
-<h3>Hash Output</h3>
-<textarea id="hashOutput" readonly></textarea>
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('.btn-primary');
+        const btnText = btn.querySelector('.btn-text');
 
-</div>
-</div>
+        // Loading state
+        btnText.textContent = 'Sending...';
+        btn.disabled = true;
 
-<script src="index.js"></script>
+        try {
+          const response = await fetch('https://formspree.io/f/reggieninozafrapelesores@gmail.com', {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (response.ok) {
+            form.reset();
+            formSuccess.classList.add('show');
+            setTimeout(() => formSuccess.classList.remove('show'), 5000);
+          } else {
+            // Fallback: open Gmail compose with the message
+            const name    = form.querySelector('[name="name"]').value;
+            const email   = form.querySelector('[name="email"]').value;
+            const subject = form.querySelector('[name="subject"]').value;
+            const message = form.querySelector('[name="message"]').value;
+            window.open(`mailto:reggieninozafrapelesores@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent('From: ' + name + ' <' + email + '>\n\n' + message)}`);
+          }
+        } catch (err) {
+          // Fallback: mailto link
+          const name    = form.querySelector('[name="name"]').value;
+          const email   = form.querySelector('[name="email"]').value;
+          const subject = form.querySelector('[name="subject"]').value;
+          const message = form.querySelector('[name="message"]').value;
+          window.open(`mailto:reggieninozafrapelesores@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent('From: ' + name + ' <' + email + '>\n\n' + message)}`);
+        } finally {
+          btnText.textContent = 'Send Message';
+          btn.disabled = false;
+        }
+      });
+    });
+  </script>
+
+  <script src="index.js"></script>
 </body>
 </html>
