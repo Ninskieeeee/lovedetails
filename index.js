@@ -387,4 +387,76 @@ document.addEventListener('DOMContentLoaded', () => {
     el.innerHTML = el.innerHTML.replace('2024', new Date().getFullYear());
   });
 
+
+
+  // ─── 19. BACKGROUND MUSIC ───────────────────────────────────
+  const bgMusic = document.getElementById('bgMusic');
+  const musicToggle = document.getElementById('musicToggle');
+  const MUSIC_VOLUME = 0.35;
+  let userMuted = false;
+  try { userMuted = localStorage.getItem('musicMuted') === '1'; } catch (e) {}
+
+  bgMusic.volume = 0;
+
+  function fadeTo(target, ms = 1200) {
+    const start = bgMusic.volume;
+    const t0 = performance.now();
+    (function tick(now) {
+      const k = Math.min((now - t0) / ms, 1);
+      bgMusic.volume = start + (target - start) * k;
+      if (k < 1) requestAnimationFrame(tick);
+    })(t0);
+  }
+
+  function setMusicUI(on) {
+    musicToggle.classList.toggle('playing', on);
+    musicToggle.setAttribute('aria-pressed', String(on));
+  }
+
+  function playMusic() {
+    return bgMusic.play().then(() => {
+      fadeTo(MUSIC_VOLUME);
+      setMusicUI(true);
+      removeUnlockListeners();
+    });
+  }
+
+  function pauseMusic() {
+    fadeTo(0, 500);
+    setTimeout(() => bgMusic.pause(), 500);
+    setMusicUI(false);
+  }
+
+  // Browsers block sound until the visitor interacts, so start on first click/tap/key
+  const unlockEvents = ['pointerdown', 'keydown', 'touchend'];
+  function unlock() { if (!userMuted) playMusic().catch(() => {}); }
+  function removeUnlockListeners() {
+    unlockEvents.forEach(ev => document.removeEventListener(ev, unlock));
+  }
+
+  if (!userMuted) {
+    // Try autoplay first (works if the browser allows it)
+    playMusic().catch(() => {
+      unlockEvents.forEach(ev => document.addEventListener(ev, unlock));
+    });
+  }
+
+  musicToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (bgMusic.paused) {
+      userMuted = false;
+      playMusic().catch(() => {});
+    } else {
+      userMuted = true;
+      pauseMusic();
+    }
+    try { localStorage.setItem('musicMuted', userMuted ? '1' : '0'); } catch (err) {}
+  });
+
+  // Pause when the tab is hidden, resume when back
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) bgMusic.pause();
+    else if (!userMuted && bgMusic.volume > 0) bgMusic.play().catch(() => {});
+  });
+
 }); // end DOMContentLoaded
