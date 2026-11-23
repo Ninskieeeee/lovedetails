@@ -3,12 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Reggie Niño Zafra Pelesores | IT Portfolio</title>
+  <title>Reggie &amp; My Girl 💕 | Portfolio</title>
   <link rel="stylesheet" href="index.css" />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
+
+  <!-- Girlfriend photo slideshow background -->
+  <div class="gf-bg" id="gfBg"></div>
 
   <!-- Custom Cursor -->
   <div class="cursor" id="cursor"></div>
@@ -29,9 +32,10 @@
     </div>
     <ul class="nav-links" id="navLinks">
       <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+      <li><a href="#gallery" class="nav-link" data-section="gallery">Her</a></li>
       <li><a href="#about" class="nav-link" data-section="about">About</a></li>
-      <li><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
-      <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
+      <li><a href="#story" class="nav-link" data-section="story">Our Story</a></li>
+      <li><a href="#adventures" class="nav-link" data-section="adventures">Adventures</a></li>
       <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
     </ul>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
@@ -52,52 +56,61 @@
     </div>
     <div class="hero-content">
       <div class="hero-tag animate-up delay-1">
-        <span class="dot"></span> Available for Internship &amp; Collaboration
+        <span class="dot"></span> <span id="clockTime">--:--:--</span> &nbsp;·&nbsp; <span id="clockDate"></span>
       </div>
       <h1 class="hero-name animate-up delay-2">
-        Reggie Niño<br />Zafra<br/><span class="name-accent">Pelesores</span>
+        <span id="greetWord">Goodday</span><br /><span class="name-accent">stalker 💕</span>
       </h1>
       <div class="hero-title animate-up delay-3">
         <span class="typed-text" id="typedText"></span><span class="cursor-blink">|</span>
       </div>
       <p class="hero-desc animate-up delay-4">
-        A passionate <strong>IT Fresh Graduate</strong> exploring the world of technology — building modern web experiences, learning frameworks, and turning curiosity into code.
+        Welcome to the page of the <strong>luckiest guy alive</strong>. Scroll down and stare as long as you want — she's <strong id="gfNameHero">my girlfriend</strong>, and yes, I'm flexing.
       </p>
       <div class="hero-cta animate-up delay-5">
-        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <a href="#gallery" class="btn btn-primary">See Her Gallery 💗</a>
         <a href="#contact" class="btn btn-outline">Get In Touch</a>
       </div>
       <div class="hero-stats animate-up delay-6">
         <div class="stat">
-          <span class="stat-num" data-count="10">0</span>+
-          <span class="stat-label">Frameworks Learned</span>
+          <span class="stat-num" data-count="1" id="statDays">0</span>
+          <span class="stat-label">Days Together</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat">
-          <span class="stat-num" data-count="5">0</span>+
-          <span class="stat-label">Projects Built</span>
+          <span class="stat-num" data-count="6" id="statPhotos">0</span>
+          <span class="stat-label">Photos Of Her</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat">
-          <span class="stat-num" data-count="4">0</span>
-          <span class="stat-label">Year Experience</span>
+          <span class="stat-inf">∞</span>
+          <span class="stat-label">Until Forever</span>
         </div>
       </div>
     </div>
     <div class="hero-image animate-fade delay-4">
-      <div class="image-frame">
-        <img src="images/MyPortfolio.jpg" alt="Reggie Niño Zafra Pelesores"
-             onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&crop=face'" />
+      <div class="image-frame" id="tiltFrame">
+        <div class="frame-slides" id="frameSlides"></div>
+        <div class="frame-empty" id="frameEmpty"><i class="fas fa-heart"></i><span>Add her photo here<br /><b>images/Girlfriend.png</b></span></div>
         <div class="image-overlay"></div>
+        <div class="frame-glare"></div>
+        <span class="frame-hint"><i class="fas fa-hand-pointer"></i> tap for love</span>
+        <div class="frame-caption">
+          <span class="fc-label">Together since</span>
+          <strong id="sinceDate">January 22, 2023</strong>
+          <span class="fc-count" id="loveCounter"></span>
+          <span class="fc-forever">and counting… until forever ♾️</span>
+        </div>
+        <div class="frame-dots" id="frameDots"></div>
       </div>
       <div class="image-badge badge-1">
-        <i class="fab fa-react"></i> React
+        <i class="fas fa-heart"></i> Girlfriend
       </div>
       <div class="image-badge badge-2">
-        <i class="fab fa-laravel"></i> Laravel
+        <i class="fas fa-star"></i> Forever
       </div>
       <div class="image-badge badge-3">
-        <i class="fab fa-vuejs"></i> Vue
+        <i class="fas fa-ring"></i> Mine
       </div>
     </div>
     <div class="scroll-indicator animate-up delay-6">
@@ -105,6 +118,19 @@
       <div class="scroll-line"></div>
     </div>
   </section>
+
+  <!-- Gallery -->
+  <section class="gallery section" id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">♥ — Her</span>
+        <h2 class="section-title">The Prettiest View on This Site</h2>
+        <p class="section-desc">Yes, I'm flexing. No, I'm not sorry.</p>
+      </div>
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </div>
+  </section>
+  <div class="lightbox" id="lightbox"><img alt="" /><button id="lbClose" aria-label="Close">&times;</button></div>
 
   <!-- About Section -->
   <section class="about section" id="about">
@@ -116,8 +142,7 @@
       <div class="about-grid">
         <div class="about-image-wrap reveal-left">
           <div class="about-img-card">
-            <img src="images/MyPortfolioOne.jpg" alt="Coding Setup"
-                 onerror="this.src='https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500&h=600&fit=crop'" />
+            <img src="images/Boyfriend.png" alt="Reggie" onerror="this.style.opacity=0" />
             <div class="about-img-accent"></div>
           </div>
           <div class="about-exp-badge">
@@ -156,341 +181,98 @@
               </div>
             </div>
           </div>
-          <a href="#skills" class="btn btn-primary mt-2">See My Skills</a>
+          <a href="#story" class="btn btn-primary mt-2">Read Our Story 💕</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Skills Section -->
-  <section class="skills section" id="skills">
+  <!-- Our Story Section -->
+  <section class="story section" id="story">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">02 — Skills</span>
-        <h2 class="section-title">Tech Stack &amp; Frameworks</h2>
-        <p class="section-desc">As a fresh graduate, I've been actively learning across multiple domains of technology</p>
+        <span class="section-tag">02 — Our Story</span>
+        <h2 class="section-title">How We Became Us</h2>
+        <p class="section-desc">Every love story is beautiful, but ours is my favorite.</p>
       </div>
-
-      <div class="skills-tabs" id="skillsTabs">
-        <button class="tab-btn active" data-tab="frontend">Frontend</button>
-        <button class="tab-btn" data-tab="backend">Backend</button>
-        <button class="tab-btn" data-tab="mobile">Mobile</button>
-        <button class="tab-btn" data-tab="tools">Tools &amp; Others</button>
-      </div>
-
-      <div class="skills-panels">
-        <!-- Frontend -->
-        <div class="skills-panel active" id="tab-frontend">
-          <div class="skills-grid">
-            <div class="skill-card reveal-up">
-              <div class="skill-icon" style="background: #e34f26;"><i class="fab fa-html5"></i></div>
-              <div class="skill-info">
-                <span class="skill-name">HTML5</span>
-                <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
-                <span class="skill-percent">90%</span>
-              </div>
-            </div>
-            <div class="skill-card reveal-up delay-1">
-              <div class="skill-icon" style="background: #1572b6;"><i class="fab fa-css3-alt"></i></div>
-              <div class="skill-info">
-                <span class="skill-name">CSS3</span>
-                <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
-                <span class="skill-percent">85%</span>
-              </div>
-            </div>
-            <div class="skill-card reveal-up delay-2">
-              <div class="skill-icon" style="background: #f7df1e;"><i class="fab fa-js"></i></div>
-              <div class="skill-info">
-                <span class="skill-name">JavaScript</span>
-                <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
-                <span class="skill-percent">75%</span>
-              </div>
-            </div>
-            <div class="skill-card reveal-up delay-3">
-              <div class="skill-icon" style="background: #61dafb;"><i class="fab fa-react"></i></div>
-              <div class="skill-info">
-                <span class="skill-name">React.js</span>
-                <div class="skill-bar"><div class="skill-fill" data-width="65"></div></div>
-                <span class="skill-percent">65%</span>
-              </div>
-            </div>
-            <div class="skill-card reveal-up delay-4">
-              <div class="skill-icon" style="background: #38bdf8;"><i class="fas fa-wind"></i></div>
-              <div class="skill-info">
-                <span class="skill-name">Tailwind CSS</span>
-                <div class="skill-bar"><div class="skill-fill" data-width="70"></div></div>
-                <span class="skill-percent">70%</span>
-              </div>
-            </div>
-            <div class="skill-card reveal-up delay-5">
-              <div class="skill-icon" style="background: #7952b3;"><i class="fab fa-bootstrap"></i></div>
-              <div class="skill-info">
-                <span class="skill-name">Bootstrap</span>
-                <div class="skill-bar"><div class="skill-fill" data-width="60"></div></div>
-                <span class="skill-percent">60%</span>
-              </div>
-            </div>
-          </div>
+      <div class="timeline">
+        <div class="tl-item reveal-up">
+          <div class="tl-dot"><i class="fas fa-hand-sparkles"></i></div>
+          <div class="tl-card"><span class="tl-date">The Beginning</span><h3>The First Hello</h3><p>A simple hello that changed everything. I had no idea she'd become my favorite person.</p></div>
         </div>
-
-        <!-- Backend -->
-        <div class="skills-panel" id="tab-backend">
-          <div class="skills-grid">
-            <div class="skill-card reveal-up">
-              <div class="skill-icon" style="background: #3c873a;"><i class="fab fa-node-js"></i></div>
-              <div class="skill-info">
-                <span class="skill-name">Node.js</span>
-                <div class="skill-bar"><div class="skill-fill" data-width="50"></div></div>
-                <span class="skill-percent">50%</span>
-              </div>
-            </div>
-            <div class="skill-card reveal-up delay-1">
-              <div class="skill-icon" style="background: #3776ab;"><i class="fab fa-python"></i></div>
-              <div class="skill-info">
-                <span class="skill-name">Python</span>
-                <div class="skill-bar"><div class="skill-fill" data-width="50"></div></div>
-                <span class="skill-percent">50%</span>
-              </div>
-            </div>
-            <div class="skill-card reveal-up delay-2">
-              <div class="skill-icon" style="background: #ff6900;"><i class="fas fa-fire"></i></div>
-              <div class="skill-info">
-                <span class="skill-name">Express.js</span>
-                <div class="skill-bar"><div class="skill-fill" data-width="50"></div></div>
-                <span class="skill-percent">50%</span>
-              </div>
-            </div>
-            <div class="skill-card reveal-up delay-3">
-              <div class="skill-icon" style="background: #4479a1;"><i class="fas fa-database"></i></div>
-              <div class="skill-info">
-                <span class="skill-name">MySQL</span>
-                <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
-                <span class="skill-percent">75%</span>
-              </div>
-            </div>
-            <div class="skill-card reveal-up delay-4">
-              <div class="skill-icon" style="background: #47a248;"><i class="fas fa-leaf"></i></div>
-              <div class="skill-info">
-                <span class="skill-name">MongoDB</span>
-                <div class="skill-bar"><div class="skill-fill" data-width="50"></div></div>
-                <span class="skill-percent">50%</span>
-              </div>
-            </div>
-            <div class="skill-card reveal-up delay-5">
-              <div class="skill-icon" style="background: #cc0000;"><i class="fas fa-server"></i></div>
-              <div class="skill-info">
-                <span class="skill-name">Laravel (PHP)</span>
-                <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
-                <span class="skill-percent">85%</span>
-              </div>
-            </div>
-          </div>
+        <div class="tl-item reveal-up delay-1">
+          <div class="tl-dot"><i class="fas fa-mug-hot"></i></div>
+          <div class="tl-card"><span class="tl-date">Date #1</span><h3>Our First Date</h3><p>Nervous, smiling too much, and already sure I wanted a second one.</p></div>
         </div>
-
-        <!-- Mobile -->
-        <div class="skills-panel" id="tab-mobile">
-          <div class="skills-grid">
-            <div class="skill-card reveal-up">
-              <div class="skill-icon" style="background: #61dafb;"><i class="fab fa-react"></i></div>
-              <div class="skill-info">
-                <span class="skill-name">React Native</span>
-                <div class="skill-bar"><div class="skill-fill" data-width="50"></div></div>
-                <span class="skill-percent">50%</span>
-              </div>
-            </div>
-            <div class="skill-card reveal-up delay-1">
-              <div class="skill-icon" style="background: #0175c2;"><i class="fas fa-mobile-alt"></i></div>
-              <div class="skill-info">
-                <span class="skill-name">Flutter (Dart)</span>
-                <div class="skill-bar"><div class="skill-fill" data-width="40"></div></div>
-                <span class="skill-percent">50%</span>
-              </div>
-            </div>
-            <div class="skill-card reveal-up delay-2">
-              <div class="skill-icon" style="background: #a4c639;"><i class="fab fa-android"></i></div>
-              <div class="skill-info">
-                <span class="skill-name">Android (Java)</span>
-                <div class="skill-bar"><div class="skill-fill" data-width="35"></div></div>
-                <span class="skill-percent">35%</span>
-              </div>
-            </div>
-          </div>
+        <div class="tl-item reveal-up delay-2">
+          <div class="tl-dot"><i class="fas fa-heart"></i></div>
+          <div class="tl-card"><span class="tl-date">The Big Day</span><h3>Becoming Official</h3><p>The best "yes" I've ever heard. Best decision of my life, no debugging needed.</p></div>
         </div>
-
-        <!-- Tools -->
-        <div class="skills-panel" id="tab-tools">
-          <div class="skills-grid">
-            <div class="skill-card reveal-up">
-              <div class="skill-icon" style="background: #f05032;"><i class="fab fa-git-alt"></i></div>
-              <div class="skill-info">
-                <span class="skill-name">Git &amp; GitHub</span>
-                <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
-                <span class="skill-percent">75%</span>
-              </div>
-            </div>
-            <div class="skill-card reveal-up delay-1">
-              <div class="skill-icon" style="background: #007acc;"><i class="fas fa-code"></i></div>
-              <div class="skill-info">
-                <span class="skill-name">VS Code</span>
-                <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
-                <span class="skill-percent">90%</span>
-              </div>
-            </div>
-            <div class="skill-card reveal-up delay-2">
-              <div class="skill-icon" style="background: #f24e1e;"><i class="fab fa-figma"></i></div>
-              <div class="skill-info">
-                <span class="skill-name">Figma</span>
-                <div class="skill-bar"><div class="skill-fill" data-width="65"></div></div>
-                <span class="skill-percent">65%</span>
-              </div>
-            </div>
-            <div class="skill-card reveal-up delay-3">
-              <div class="skill-icon" style="background: #2496ed;"><i class="fab fa-docker"></i></div>
-              <div class="skill-info">
-                <span class="skill-name">Docker (Learning)</span>
-                <div class="skill-bar"><div class="skill-fill" data-width="30"></div></div>
-                <span class="skill-percent">30%</span>
-              </div>
-            </div>
-            <div class="skill-card reveal-up delay-4">
-              <div class="skill-icon" style="background: #ff9900;"><i class="fab fa-aws"></i></div>
-              <div class="skill-info">
-                <span class="skill-name">AWS Basics</span>
-                <div class="skill-bar"><div class="skill-fill" data-width="25"></div></div>
-                <span class="skill-percent">25%</span>
-              </div>
-            </div>
-            <div class="skill-card reveal-up delay-5">
-              <div class="skill-icon" style="background: #1e293b;"><i class="fas fa-terminal"></i></div>
-              <div class="skill-info">
-                <span class="skill-name">Linux CLI</span>
-                <div class="skill-bar"><div class="skill-fill" data-width="35"></div></div>
-                <span class="skill-percent">35%</span>
-              </div>
-            </div>
-          </div>
+        <div class="tl-item reveal-up delay-3">
+          <div class="tl-dot"><i class="fas fa-infinity"></i></div>
+          <div class="tl-card"><span class="tl-date">Today &amp; Always</span><h3>Still Choosing Her</h3><p>Every day, every adventure, every ordinary Tuesday. It's always her.</p></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Projects Section -->
-  <section class="projects section" id="projects">
+  <!-- Our Adventures Section -->
+  <section class="adventures section" id="adventures">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">03 — Projects</span>
-        <h2 class="section-title">What I've Built</h2>
-        <p class="section-desc">Hands-on projects that showcase my learning journey as a fresh graduate developer</p>
+        <span class="section-tag">03 — Adventures</span>
+        <h2 class="section-title">Our Adventures</h2>
+        <p class="section-desc">The places we've been, the memories we made, and the many more still to come</p>
       </div>
-      <div class="projects-grid">
-
-        <!-- PROJECT 1: Food Management System (FEATURED) -->
-        <div class="project-card featured reveal-up">
-          <div class="project-img">
-            <img src="images/project1.png" alt="Food Management System"
-                 onerror="this.src='https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=700&h=350&fit=crop'" />
-            <div class="project-overlay">
-              <div class="project-links">
-                <a href="#" class="proj-link"><i class="fab fa-github"></i> Code</a>
-                <a href="#" class="proj-link"><i class="fas fa-external-link-alt"></i> Live</a>
-              </div>
-            </div>
-            <span class="project-badge">Featured</span>
+      <div class="adv-grid">
+        <div class="adv-card reveal-up">
+          <div class="adv-img">
+            <i class="fas fa-umbrella-beach adv-ph"></i>
+            <img src="images/Image1.png" alt="Beach Day" onerror="this.style.display='none'" />
+            <span class="adv-tag"><i class="fas fa-map-marker-alt"></i> Not available right now</span>
           </div>
-          <div class="project-body">
-            <h3 class="project-title">Food Management System</h3>
-            <p class="project-desc">A full-featured food management system built with pure Laravel and MySQL. Handles menu management, inventory tracking, order processing, and reporting — all within a clean, role-based dashboard interface.</p>
-            <div class="project-tags">
-              <span>Laravel</span><span>MySQL</span><span>PHP</span><span>Blade</span><span>Bootstrap</span>
-            </div>
-          </div>
+          <div class="adv-body"><h3>Beach Day</h3><p>Sun, sand, and her laugh.</p><span class="adv-date"><i class="far fa-calendar"></i> Not available right now</span></div>
         </div>
-
-        <!-- PROJECT 2: Weather Watch for Farmers -->
-        <div class="project-card reveal-up delay-1">
-          <div class="project-img">
-            <img src="images/project2.png" alt="Weather Watch Farming App"
-                 onerror="this.src='https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=600&h=350&fit=crop'" />
-            <div class="project-overlay">
-              <div class="project-links">
-                <a href="#" class="proj-link"><i class="fab fa-github"></i> Code</a>
-                <a href="#" class="proj-link"><i class="fas fa-external-link-alt"></i> Live</a>
-              </div>
-            </div>
+        <div class="adv-card reveal-up delay-1">
+          <div class="adv-img">
+            <i class="fas fa-utensils adv-ph"></i>
+            <img src="images/Image2.png" alt="Food Trip" onerror="this.style.display='none'" />
+            <span class="adv-tag"><i class="fas fa-map-marker-alt"></i> Not available right now</span>
           </div>
-          <div class="project-body">
-            <h3 class="project-title">WeatherWatch — Farmer's Planting Guide</h3>
-            <p class="project-desc">A web app for farmers to check weather conditions and determine the best days to plant. Features a calendar view, weather alerts, and push notifications built with Laravel Breeze authentication.</p>
-            <div class="project-tags">
-              <span>Laravel Breeze</span><span>MySQL</span><span>Weather API</span><span>Calendar</span>
-            </div>
-          </div>
+          <div class="adv-body"><h3>Food Trip</h3><p>We never agree on what to eat, but we always finish it.</p><span class="adv-date"><i class="far fa-calendar"></i> Not available right now</span></div>
         </div>
-
-        <!-- PROJECT 3: Pet Adoption Management System -->
-        <div class="project-card reveal-up delay-2">
-          <div class="project-img">
-            <img src="images/project3.png" alt="Pet Adoption Management System"
-                 onerror="this.src='https://images.unsplash.com/photo-1548767797-d8c844163c4a?w=600&h=350&fit=crop'" />
-            <div class="project-overlay">
-              <div class="project-links">
-                <a href="#" class="proj-link"><i class="fab fa-github"></i> Code</a>
-                <a href="#" class="proj-link"><i class="fas fa-external-link-alt"></i> Live</a>
-              </div>
-            </div>
+        <div class="adv-card reveal-up delay-2">
+          <div class="adv-img">
+            <i class="fas fa-car-side adv-ph"></i>
+            <img src="images/Image3.png" alt="Road Trip" onerror="this.style.display='none'" />
+            <span class="adv-tag"><i class="fas fa-map-marker-alt"></i> Not available right now</span>
           </div>
-          <div class="project-body">
-            <h3 class="project-title">Pet Adoption Management System</h3>
-            <p class="project-desc">A full-stack pet adoption platform connecting adopters with shelters. Built with React.js frontend and Laravel backend, featuring pet listings, adoption requests, and an admin dashboard.</p>
-            <div class="project-tags">
-              <span>React.js</span><span>Laravel</span><span>Tailwind</span><span>MySQL</span>
-            </div>
-          </div>
+          <div class="adv-body"><h3>Road Trip</h3><p>Good music, bad directions, perfect company.</p><span class="adv-date"><i class="far fa-calendar"></i> Not available right now</span></div>
         </div>
-
-        <!-- PROJECT 4: Personal Portfolio -->
-        <div class="project-card reveal-up delay-3">
-          <div class="project-img">
-            <img src="images/project4.png" alt="Personal Portfolio Website"
-                 onerror="this.src='https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=600&h=350&fit=crop'" />
-            <div class="project-overlay">
-              <div class="project-links">
-                <a href="#" class="proj-link"><i class="fab fa-github"></i> Code</a>
-                <a href="#" class="proj-link"><i class="fas fa-external-link-alt"></i> Live</a>
-              </div>
-            </div>
+        <div class="adv-card reveal-up">
+          <div class="adv-img">
+            <i class="fas fa-sun adv-ph"></i>
+            <img src="images/Image4.png" alt="Sunset Date" onerror="this.style.display='none'" />
+            <span class="adv-tag"><i class="fas fa-map-marker-alt"></i> Not available right now</span>
           </div>
-          <div class="project-body">
-            <h3 class="project-title">Personal Portfolio</h3>
-            <p class="project-desc">This very portfolio you're viewing — built with vanilla HTML, CSS, and JavaScript. Features custom cursor, scroll animations, typing effects, skill bars, and a fully responsive layout.</p>
-            <div class="project-tags">
-              <span>HTML5</span><span>CSS3</span><span>JavaScript</span>
-            </div>
-          </div>
+          <div class="adv-body"><h3>Sunset Date</h3><p>Golden hour looks better with her in it.</p><span class="adv-date"><i class="far fa-calendar"></i> Not available right now</span></div>
         </div>
-
-        <!-- PROJECT 5: Intern OJT Tracker (FEATURED WIDE) -->
-        <div class="project-card featured reveal-up delay-4">
-          <div class="project-img">
-            <img src="images/project5.png" alt="Intern OJT Tracker Management System"
-                 onerror="this.src='https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700&h=350&fit=crop'" />
-            <div class="project-overlay">
-              <div class="project-links">
-                <a href="#" class="proj-link"><i class="fab fa-github"></i> Code</a>
-                <a href="#" class="proj-link"><i class="fas fa-external-link-alt"></i> Live</a>
-              </div>
-            </div>
-            <span class="project-badge">Mobile + Web</span>
+        <div class="adv-card reveal-up delay-1">
+          <div class="adv-img">
+            <i class="fas fa-film adv-ph"></i>
+            <img src="images/Image5.png" alt="Movie Night" onerror="this.style.display='none'" />
+            <span class="adv-tag"><i class="fas fa-map-marker-alt"></i> Not available right now</span>
           </div>
-          <div class="project-body">
-            <h3 class="project-title">Intern OJT Tracker Management System</h3>
-            <p class="project-desc">A complete OJT tracking platform with a web-based admin dashboard and a companion React Native mobile app for interns. Interns can submit daily journal entries, receive push notifications for reminders and announcements, and track their OJT hours — all from their phones.</p>
-            <div class="project-tags">
-              <span>React Native</span><span>Laravel</span><span>MySQL</span><span>Push Notifications</span><span>Journal</span>
-            </div>
-          </div>
+          <div class="adv-body"><h3>Movie Night</h3><p>I said I'd watch the movie. I watched her instead.</p><span class="adv-date"><i class="far fa-calendar"></i> Not available right now</span></div>
         </div>
-
+        <div class="adv-card reveal-up delay-2">
+          <div class="adv-img">
+            <i class="fas fa-plane-departure adv-ph"></i>
+            <img src="images/Girlfriend.png" alt="Next Stop: Anywhere" onerror="this.style.display='none'" />
+            <span class="adv-tag"><i class="fas fa-map-marker-alt"></i> Not available right now</span>
+          </div>
+          <div class="adv-body"><h3>Next Stop: Anywhere</h3><p>As long as it's with her.</p><span class="adv-date"><i class="far fa-calendar"></i> Not available right now</span></div>
+        </div>
       </div>
     </div>
   </section>
@@ -511,6 +293,7 @@
               <span class="c-label">Email</span>
               <a href="mailto:reggieninozafrapelesores@gmail.com">reggieninozafrapelesores@gmail.com</a>
             </div>
+            <button class="copy-btn" id="copyEmail" type="button" title="Copy email"><i class="far fa-copy"></i></button>
           </div>
           <div class="contact-card">
             <i class="fab fa-facebook"></i>
@@ -584,7 +367,7 @@
         <span class="logo-bracket">&lt;</span>RNZP<span class="logo-bracket">/&gt;</span>
       </div>
       <p class="footer-text">Designed &amp; Built by <strong>Reggie Niño Zafra Pelesores</strong> © 2025</p>
-      <p class="footer-sub">BS Information Technology Fresh Graduate</p>
+      <p class="footer-sub">BS Information Technology Fresh Graduate · Built with 💗 for my girl</p>
     </div>
   </footer>
 

@@ -103,12 +103,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // ─── 4. TYPED TEXT HERO ─────────────────────────────────────
   const typedEl = document.getElementById('typedText');
   const phrases = [
-    'IT Fresh Graduate',
-    'Frontend Developer',
-    'React Enthusiast',
-    'Backend Learner',
-    'Full-Stack Explorer',
-    'Tech Builder'
+    'My Favorite Person',
+    'The Prettiest Girl Alive',
+    'Reggie\'s Girlfriend 💕',
+    'Kilig Overload',
+    'Forever & Always'
   ];
   let pIndex = 0, cIndex = 0, isDeleting = false;
 
@@ -349,7 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const bar = document.createElement('div');
     bar.style.cssText = `
       position: fixed; top: 0; left: 0; height: 3px; z-index: 9999;
-      background: linear-gradient(90deg, #1a56db, #0ea5e9);
+      background: linear-gradient(90deg, #e11d74, #fb7185);
       width: 0%; transition: width 0.1s ease;
       pointer-events: none;
     `;
@@ -460,3 +459,191 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 }); // end DOMContentLoaded
+
+/* ============================================================
+   GIRLFRIEND EDITION — edit this block, then drop her photos
+   into the /images folder as gf1.jpg … gf6.jpg
+   ============================================================ */
+const GF = {
+  name: 'My Girlfriend',        // ← her name
+  since: '2023-01-22',          // ← your anniversary (YYYY-MM-DD)
+  photos: [
+    { src: 'images/Girlfriend.png', cap: 'My favorite person' },
+    { src: 'images/Image1.png', cap: 'Mine 💕' },
+    { src: 'images/Image2.png', cap: 'Pretty as always' },
+    { src: 'images/Image3.png', cap: 'Kilig overload' },
+    { src: 'images/Image4.png', cap: 'Forever & always' },
+    { src: 'images/Image5.png', cap: 'Best thing that happened to me' }
+  ]
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  const $ = id => document.getElementById(id);
+
+  // Time-based greeting + live clock
+  function greeting(h) {
+    if (h >= 5 && h < 12) return 'Goodmorning';
+    if (h === 12) return 'Goodnoon';
+    if (h > 12 && h < 18) return 'Goodafternoon';
+    return 'Goodevening';
+  }
+  function tick() {
+    const n = new Date();
+    $('greetWord').textContent = greeting(n.getHours());
+    $('clockTime').textContent = n.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', second: '2-digit' });
+    $('clockDate').textContent = n.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  // Stats + her name
+  const days = Math.max(1, Math.floor((Date.now() - new Date(GF.since)) / 864e5));
+  $('statDays').setAttribute('data-count', days);
+  $('statPhotos').setAttribute('data-count', GF.photos.length);
+  $('gfNameHero').textContent = GF.name.toLowerCase();
+
+  // Preload photos, keep only the ones that exist
+  const found = new Array(GF.photos.length);
+  let pending = GF.photos.length;
+  GF.photos.forEach((p, i) => {
+    const im = new Image();
+    im.onload = () => { found[i] = p; if (!--pending) build(found.filter(Boolean)); };
+    im.onerror = () => { if (!--pending) build(found.filter(Boolean)); };
+    im.src = p.src;
+  });
+
+  function build(list) {
+    const grid = $('galleryGrid');
+    if (!list.length) {
+      grid.innerHTML = '<div class="gallery-empty">📸 Put her photos in the <b>images</b> folder as gf1.jpg, gf2.jpg … and refresh.</div>';
+      return;
+    }
+
+    // Fullscreen slideshow background
+    const bg = $('gfBg');
+    const slides = list.map(p => {
+      const s = document.createElement('div');
+      s.className = 'slide';
+      s.style.backgroundImage = `url("${p.src}")`;
+      bg.appendChild(s);
+      return s;
+    });
+    let cur = 0;
+    slides[0].classList.add('on');
+    if (slides.length > 1) setInterval(() => {
+      slides[cur].classList.remove('on');
+      cur = (cur + 1) % slides.length;
+      slides[cur].classList.add('on');
+    }, 6000);
+    buildFrame(list);
+
+    // Gallery grid + lightbox
+    const lb = $('lightbox'), lbImg = lb.querySelector('img');
+    list.forEach(p => {
+      const f = document.createElement('figure');
+      f.className = 'g-item';
+      f.innerHTML = `<img src="${p.src}" alt="${GF.name}" loading="lazy" /><figcaption>${p.cap}</figcaption>`;
+      f.addEventListener('click', () => { lbImg.src = p.src; lb.classList.add('open'); });
+      grid.appendChild(f);
+    });
+    const close = () => lb.classList.remove('open');
+    lb.addEventListener('click', close);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+  }
+
+  // Live "together since" counter
+  const pad = n => String(n).padStart(2, '0');
+  const sinceD = new Date(GF.since + 'T00:00:00');
+  $('sinceDate').textContent = sinceD.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  function loveTick() {
+    const n = new Date();
+    let y = n.getFullYear() - sinceD.getFullYear();
+    let m = n.getMonth() - sinceD.getMonth();
+    let d = n.getDate() - sinceD.getDate();
+    if (d < 0) { m--; d += new Date(n.getFullYear(), n.getMonth(), 0).getDate(); }
+    if (m < 0) { y--; m += 12; }
+    $('loveCounter').textContent = `${y} yrs · ${m} mos · ${d} days · ${pad(n.getHours())}:${pad(n.getMinutes())}:${pad(n.getSeconds())}`;
+  }
+  loveTick();
+  setInterval(loveTick, 1000);
+
+  // 3D tilt + glare on the hero frame
+  const frame = $('tiltFrame');
+  const wrap = frame.parentElement;
+  wrap.addEventListener('mousemove', e => {
+    const r = frame.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+    frame.style.transform = `rotateY(${(px - 0.5) * 18}deg) rotateX(${(0.5 - py) * 18}deg) scale(1.03)`;
+    frame.style.setProperty('--gx', px * 100 + '%');
+    frame.style.setProperty('--gy', py * 100 + '%');
+  });
+  wrap.addEventListener('mouseleave', () => { frame.style.transform = ''; });
+
+  // Heart burst on click
+  function burst(x, y) {
+    for (let i = 0; i < 12; i++) {
+      const s = document.createElement('span');
+      s.className = 'burst';
+      s.textContent = ['💗', '💖', '💕', '❤️'][i % 4];
+      s.style.left = x + 'px'; s.style.top = y + 'px';
+      s.style.fontSize = 16 + Math.random() * 16 + 'px';
+      const a = Math.random() * Math.PI * 2, dist = 70 + Math.random() * 90;
+      s.style.setProperty('--dx', Math.cos(a) * dist + 'px');
+      s.style.setProperty('--dy', Math.sin(a) * dist - 40 + 'px');
+      document.body.appendChild(s);
+      setTimeout(() => s.remove(), 1000);
+    }
+  }
+
+  // Photo carousel inside the frame
+  function buildFrame(list) {
+    $('frameEmpty').style.display = 'none';
+    const box = $('frameSlides'), dots = $('frameDots');
+    const slides = list.map((p, i) => {
+      const s = document.createElement('div');
+      s.className = 'fs';
+      s.style.backgroundImage = `url("${p.src}")`;
+      box.appendChild(s);
+      const b = document.createElement('button');
+      b.setAttribute('aria-label', 'Photo ' + (i + 1));
+      b.addEventListener('click', e => { e.stopPropagation(); go(i); });
+      dots.appendChild(b);
+      return s;
+    });
+    const dotEls = dots.querySelectorAll('button');
+    let idx = 0, timer;
+    function go(i) {
+      slides[idx].classList.remove('on'); dotEls[idx].classList.remove('on');
+      idx = (i + slides.length) % slides.length;
+      slides[idx].classList.add('on'); dotEls[idx].classList.add('on');
+      clearInterval(timer);
+      if (slides.length > 1) timer = setInterval(() => go(idx + 1), 4500);
+    }
+    go(0);
+    frame.addEventListener('click', e => { burst(e.clientX, e.clientY); go(idx + 1); });
+  }
+  frame.addEventListener('click', e => { if (!$('frameSlides').children.length) burst(e.clientX, e.clientY); });
+
+  // Copy email button
+  const copyBtn = $('copyEmail');
+  copyBtn.addEventListener('click', () => {
+    const mail = 'reggieninozafrapelesores@gmail.com';
+    (navigator.clipboard ? navigator.clipboard.writeText(mail) : Promise.reject()).then(() => {
+      copyBtn.classList.add('done');
+      copyBtn.innerHTML = '<i class="fas fa-check"></i>';
+      setTimeout(() => { copyBtn.classList.remove('done'); copyBtn.innerHTML = '<i class="far fa-copy"></i>'; }, 1800);
+    }).catch(() => { window.location.href = 'mailto:' + mail; });
+  });
+
+  // Floating hearts
+  setInterval(() => {
+    if (document.hidden) return;
+    const s = document.createElement('span');
+    s.className = 'float-heart';
+    s.textContent = ['💗', '💖', '💕', '🌸'][Math.floor(Math.random() * 4)];
+    s.style.left = Math.random() * 100 + 'vw';
+    s.style.fontSize = 14 + Math.random() * 18 + 'px';
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 7000);
+  }, 1200);
+});
